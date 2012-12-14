@@ -52,3 +52,6 @@
 [submodule "bundle/liquid"]
 	path = bundle/liquid
 	url = https://github.com/tpope/vim-liquid
+[submodule "bundle/indent-guides"]
+	path = bundle/indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git

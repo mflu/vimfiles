@@ -10,6 +10,7 @@ set nocompatible
 set encoding=utf-8
 
 call pathogen#infect()
+syntax on
 filetype plugin indent on
 
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
@@ -17,13 +18,19 @@ runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 syntax enable
 if has('gui_running')
   set background=light
+  hi IndentGuidesOdd  ctermbg=white
+  hi IndentGuidesEven ctermbg=lightgrey
 else
   set background=dark
+  hi IndentGuidesOdd  ctermbg=black
+  hi IndentGuidesEven ctermbg=darkgrey
 endif
+let g:indent_guides_guide_size=1
 let g:solarized_termcolors=256
 colorscheme solarized
 
-set nonumber    " line numbers aren't needed
+set nocp
+set number    " line numbers aren't needed
 set ruler       " show the cursor position all the time
 set cursorline  " highlight the line of the cursor
 set showcmd     " show partial commands below the status line
@@ -32,12 +39,15 @@ let g:is_bash=1 " default shell syntax
 set history=200 " remember more Ex commands
 set scrolloff=3 " have some context around the current line always on screen
 
+" paste lines from unnamed register and fix indentation
+set paste
+
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
 set hidden
 
 "" Whitespace
-set nowrap                        " don't wrap lines
+set wrap                        " don't wrap lines
 set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
@@ -93,7 +103,6 @@ map Q gq
 
 let mapleader=","
 
-" paste lines from unnamed register and fix indentation
 nmap <leader>p pV`]=
 nmap <leader>P PV`]=
 
@@ -128,11 +137,12 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" If you are a vim fan, comment them out
 " disable cursor keys in normal mode
-map <Left>  :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up>    :echo "no!"<cr>
-map <Down>  :echo "no!"<cr>
+"map <Left>  :echo "no!"<cr>
+"map <Right> :echo "no!"<cr>
+"map <Up>    :echo "no!"<cr>
+"map <Down>  :echo "no!"<cr>
 
 set backupdir=~/.vim/_backup    " where to put backup files.
 set directory=~/.vim/_temp      " where to put swap files.
@@ -152,3 +162,10 @@ if has("statusline") && !&cp
   set statusline+=Buf:#%n
   set statusline+=[%b][0x%B]
 endif
+
+"powerline{
+ set guifont=PowerlineSymbols\ for\ Powerline
+ set nocompatible
+ set t_Co=256
+ let g:Powerline_symbols = 'fancy'
+" }
