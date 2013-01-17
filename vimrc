@@ -27,7 +27,7 @@ else
 endif
 let g:indent_guides_guide_size=1
 let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme desert
 
 set nocp
 set number    " line numbers aren't needed
