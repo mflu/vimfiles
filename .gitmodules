@@ -58,3 +58,6 @@
 [submodule "bundle/tmux-config"]
 	path = bundle/tmux-config
 	url = git://github.com/pivotal/tmux-config.git
+[submodule "vim-powerline"]
+	path = bundle/vim-powerline
+	url = git@github.com:Lokaltog/powerline.git
